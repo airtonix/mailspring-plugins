@@ -1,18 +1,42 @@
-import { ComponentRegistry } from 'mailspring-exports';
+import {
+  // Actions,
+  // ComponentRegistry,
+  // DatabaseStore,
+  PreferencesUIStore,
+  // TaskQueue,
+  // Thread,
+  // WorkspaceStore,
+} from 'mailspring-exports';
 
-import MyComposerButton from './my-composer-button';
-import MyMessageSidebar from './my-message-sidebar';
+import { ConfigService } from './Config/ConfigService';
+import { PluginManagerFactory } from './Components/PluginManager';
+import {
+  CONST_APPLICATION_NAME,
+  CONST_PREFERENCES_TABID,
+  CONST_PREFERENCES_TABLABEL,
+} from './constants';
 
-// Activate is called when the package is loaded. If your package previously
-// saved state using `serialize` it is provided.
-//
-export function activate() {
-  ComponentRegistry.register(MyComposerButton, {
-    role: 'Composer:ActionButton',
+const App = {
+  ConfigService: null,
+  PreferencesTab: null,
+};
+
+export async function activate() {
+  const config = AppEnv.config;
+
+  App.ConfigService = new ConfigService({
+    config,
+    keypath: CONST_APPLICATION_NAME,
   });
-  ComponentRegistry.register(MyMessageSidebar, {
-    role: 'MessageListSidebar:ContactCard',
+
+  App.PreferencesTab = new PreferencesUIStore.TabItem({
+    tabId: CONST_PREFERENCES_TABID,
+    displayName: CONST_PREFERENCES_TABLABEL,
+    componentClassFn: () =>
+      PluginManagerFactory({ service: App.ConfigService }),
   });
+
+  PreferencesUIStore.registerPreferencesTab(App.PreferencesTab);
 }
 
 // Serialize is called when your package is about to be unmounted.
@@ -27,6 +51,7 @@ export function serialize() {}
 // subscribing to events, release them here.
 //
 export function deactivate() {
-  ComponentRegistry.unregister(MyComposerButton);
-  ComponentRegistry.unregister(MyMessageSidebar);
+  if (App.ConfigService) App.ConfigService.destroy();
+  if (App.PreferencesTab)
+    PreferencesUIStore.unregisterPreferencesTab(App.PreferencesTab.sectionId);
 }
