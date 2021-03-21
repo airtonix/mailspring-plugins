@@ -1,5 +1,5 @@
 {
-  "name": "sample",
+  "name": "mailspring-plugin-pluginmanager",
   "main": "./lib/main",
   "version": "0.1.0",
   "private": false,
@@ -48,7 +48,16 @@
     "onchange": "^7.1.0",
     "pinst": "^2.1.6",
     "prettier": "^2.2.1",
-    "typescript": "^3.6.3",
+    "typescript": "4.x.x",
     "version-changed": "^2.0.0"
+  },
+  "volta": {
+    "node": "14.16.0",
+    "yarn": "1.22.10"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ts-loader": "^8.0.18",
+    "lodash": "4.17.21"
   }
 }

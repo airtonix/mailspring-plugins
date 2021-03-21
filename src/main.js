@@ -1,12 +1,4 @@
-import {
-  // Actions,
-  // ComponentRegistry,
-  // DatabaseStore,
-  PreferencesUIStore,
-  // TaskQueue,
-  // Thread,
-  // WorkspaceStore,
-} from 'mailspring-exports';
+import { PreferencesUIStore } from 'mailspring-exports';
 
 import { ConfigService } from './Config/ConfigService';
 import { PluginManagerFactory } from './Components/PluginManager';
@@ -32,8 +24,10 @@ export async function activate() {
   App.PreferencesTab = new PreferencesUIStore.TabItem({
     tabId: CONST_PREFERENCES_TABID,
     displayName: CONST_PREFERENCES_TABLABEL,
-    componentClassFn: () =>
-      PluginManagerFactory({ service: App.ConfigService }),
+    componentClassFn: () => {
+      const component = PluginManagerFactory({ service: App.ConfigService });
+      return component;
+    },
   });
 
   PreferencesUIStore.registerPreferencesTab(App.PreferencesTab);

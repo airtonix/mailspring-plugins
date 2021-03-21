@@ -1,10 +1,16 @@
 import { React } from 'mailspring-exports';
+import { Flexbox } from 'mailspring-component-kit';
 
+import { InstallerToggle } from './InstallerToggle';
 import { PluginsList } from './PluginsList';
-import { PluginDetails } from './PluginDetails';
+import { PluginInstaller } from './PluginInstaller';
 
 export class PluginManager extends React.Component {
   static displayName = 'PluginManager';
+  state = {
+    installed: [],
+    installerOpen: false,
+  };
 
   constructor(props) {
     super(props);
@@ -27,13 +33,19 @@ export class PluginManager extends React.Component {
     };
   }
 
+  toggleInstaller = () =>
+    this.setState({ installerOpen: !this.state.installerOpen });
+
   render() {
+    const { installed, installerOpen } = this.state;
+
     return (
       <section className="pluginmanager">
-        <div className="pluginmanager__container">
-          <PluginsList />
-          <PluginDetails />
-        </div>
+        <Flexbox direction="column" className="pluginmanager__container">
+          <InstallerToggle onClick={this.toggleInstaller} />
+          <PluginsList plugins={installed} />
+          {installerOpen && <PluginInstaller />}
+        </Flexbox>
       </section>
     );
   }
