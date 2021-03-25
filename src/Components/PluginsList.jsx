@@ -1,18 +1,27 @@
 import { React } from 'mailspring-exports';
-
-import { PluginSummary } from './PluginSummary';
+import { EditableList, Flexbox } from 'mailspring-component-kit';
 
 export class PluginsList extends React.Component {
   static displayName = 'PluginsList';
+  createPlugin = () => {
+    const { onCreatePlugin } = this.props;
+
+    if (typeof onCreatePlugin !== 'function') return;
+    onCreatePlugin();
+  };
+  showPluginDetails = () => {};
 
   render() {
     const { plugins = [] } = this.props;
     return (
-      <div className={'pluginlist'}>
-        {plugins.map((plugin) => (
-          <PluginSummary plugin={plugin} />
-        ))}
-      </div>
+      <Flexbox className={'pluginlist'}>
+        <EditableList
+          showEditIcon={false}
+          items={plugins}
+          onCreateItem={this.createPlugin}
+          onSelectItem={this.showPluginDetails}
+        />
+      </Flexbox>
     );
   }
 }

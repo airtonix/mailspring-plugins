@@ -1,4 +1,5 @@
 import { React } from 'mailspring-exports';
+import { Flexbox } from 'mailspring-component-kit';
 import debounce from 'lodash/debounce';
 
 export class PluginSearch extends React.Component {
@@ -7,6 +8,10 @@ export class PluginSearch extends React.Component {
   };
   handleSearchChange = (event) => {
     if (!event) return;
+
+    const { onKeyDown } = this.props;
+    if (typeof onKeyDown === 'function') onKeyDown();
+
     const value = event.target.value;
     this.setState({ value });
     this.debouncedSearch({ value });
@@ -22,9 +27,13 @@ export class PluginSearch extends React.Component {
   render() {
     const { value } = this.state;
     return (
-      <div className={'PluginSearch'}>
-        <input onChange={this.handleSearchChange} value={value} />
-      </div>
+      <Flexbox className={'pluginsearch'}>
+        <input
+          className={'pluginsearch__input'}
+          onChange={this.handleSearchChange}
+          value={value}
+        />
+      </Flexbox>
     );
   }
 }

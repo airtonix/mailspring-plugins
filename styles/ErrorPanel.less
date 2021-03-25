@@ -1,0 +1,24 @@
+@import "ui-variables";
+@import "ui-mixins";
+
+
+.errorpanel {
+    padding: @spacing-quarter;
+    color: @color-error;
+    background-color: hsl(
+        hue(@color-error),
+        saturation(@color-error),
+        95%
+    );
+    padding: 12px;
+    margin-bottom: @padding-base-vertical;
+}
+
+.errorpanel__icon {
+    margin-right: 12px;
+}
+
+.errorpanel__label {
+    font-weight: bold;
+    margin-right: 6px;
+}
