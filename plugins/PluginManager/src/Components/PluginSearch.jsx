@@ -27,9 +27,9 @@ export class PluginSearch extends React.Component {
   render() {
     const { value } = this.state;
     return (
-      <Flexbox className={'pluginsearch'}>
+      <Flexbox className={'manager-pluginsearch'}>
         <input
-          className={'pluginsearch__input'}
+          className={'manager-pluginsearch__input'}
           onChange={this.handleSearchChange}
           value={value}
         />

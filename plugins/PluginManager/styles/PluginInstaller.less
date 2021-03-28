@@ -1,7 +1,7 @@
 @import "ui-variables";
 @import "ui-mixins";
 
-.plugininstaller {
+.manager-plugininstaller {
     display: flex;
     align-items: stretch;
     justify-content: stretch;
@@ -13,10 +13,15 @@
 
 }
 
-.plugininstaller__close {
+.manager-plugininstaller__close {
     cursor: pointer;
-    width: auto;
+
+    display: flex;
     align-self: flex-start;
+    align-items: center;
+
+    height: auto;
+    width: auto;
 
     margin-bottom: @padding-base-vertical;
 }

@@ -1,12 +1,17 @@
 {
     "name": "@airtonix/mailspring-plugin-test",
     "version": "0.0.2",
+    "private": false,
     "description": "A test plugin",
     "keywords": [
         "mailspring",
         "mailspring-plugin"
     ],
     "main": "lib/main",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/airtonix/mailspring-plugins"
+    },
     "scripts": {
         "dev": "run-p 'dev:watch:*'",
         "dev:watch:js": "onchange './src/**/*.js*' -i -v -- yarn build:js",

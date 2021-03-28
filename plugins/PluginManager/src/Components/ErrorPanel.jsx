@@ -12,10 +12,10 @@ export class ErrorPanel extends React.Component {
     const { icon = '🛑', label = 'Woops', description } = this.props;
 
     return (
-      <Flexbox className="errorpanel">
-        <span className="errorpanel__icon">{icon}</span>
-        <span className="errorpanel__label">{label}</span>
-        <span className="errorpanel__description">{description}</span>
+      <Flexbox className="manager-errorpanel">
+        <span className="manager-errorpanel__icon">{icon}</span>
+        <span className="manager-errorpanel__label">{label}</span>
+        <span className="manager-errorpanel__description">{description}</span>
       </Flexbox>
     );
   }

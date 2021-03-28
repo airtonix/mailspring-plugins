@@ -4,6 +4,6 @@ export class PluginDetails extends React.Component {
   static displayName = 'PluginDetails';
 
   render() {
-    return <div className={'plugindetails'}>Plugin Details</div>;
+    return <div className={'manager-plugindetails'}>Plugin Details</div>;
   }
 }

@@ -54,13 +54,13 @@ export class PluginInstaller extends React.Component {
     const { results, error, selected, searching } = this.state;
 
     return (
-      <Flexbox className={'plugininstaller'}>
-        <button
-          className={'plugininstaller__close btn'}
+      <Flexbox className={'manager-plugininstaller'}>
+        <span
+          className={'manager-plugininstaller__close'}
           onClick={this.handleCloseClick}
         >
-          <RetinaImg name="sheet-back@2x.png" /> Back...
-        </button>
+          <RetinaImg name="sheet-back@2x.png" /> Cancel...
+        </span>
         <PluginSearch
           onKeyDown={this.clearError}
           onSearch={this.searchPackages}

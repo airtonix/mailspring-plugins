@@ -6,7 +6,7 @@ export class PluginSummary extends React.Component {
   render() {
     const { plugin } = this.props;
     return (
-      <div className={'pluginsummary'}>
+      <div className={'manager-pluginsummary'}>
         <h3>{plugin.name}</h3>
       </div>
     );

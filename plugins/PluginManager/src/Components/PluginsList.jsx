@@ -14,7 +14,7 @@ export class PluginsList extends React.Component {
   render() {
     const { plugins = [] } = this.props;
     return (
-      <Flexbox className={'pluginlist'}>
+      <Flexbox className={'manager-pluginlist'}>
         <EditableList
           showEditIcon={false}
           items={plugins}

@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "rvest.vs-code-prettier-eslint",
+        "drknoxy.eslint-disable-snippets",
+        "ghmcadams.lintlens",
+        "usernamehw.errorlens"
+    ]
+}
