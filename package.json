@@ -1,32 +1,27 @@
 {
-  "name": "mailspring-plugin-pluginmanager",
-  "main": "./lib/main",
-  "version": "0.1.0",
-  "private": false,
+  "name": "@airtonix/mailspring-plugins",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "plugins/*",
+      "components/*",
+      "tools/*"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": ""
   },
   "scripts": {
-    "dev": "run-p dev:watch:*",
-    "dev:watch:js": "onchange './src/**/*.js*' -i -- yarn build:js",
-    "build": "run-p build:*",
-    "build:js": "tsc",
+    "lint": "eslint . --ext js,jsx,ts,tsx",
     "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable",
-    "postpublish": "pinst --enable",
-    "lint": "eslint . --ext js,jsx,ts,tsx"
+    "changelog": "changeset",
+    "release": "changeset version",
+    "publish": "changeset publish",
+    "plugin:manager": "yarn workspace @airtonix/mailspring-plugin-manager",
+    "plugin:test": "yarn workspace @airtonix/mailspring-plugin-test"
   },
-  "engines": {
-    "mailspring": ">=1.6.3",
-    "node": ">=12"
-  },
-  "windowTypes": {
-    "default": true,
-    "composer": true
-  },
-  "description": "Enter a description of your package!",
-  "license": "MIT",
   "devDependencies": {
     "@types/react": "^16.7.22",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
@@ -56,8 +51,9 @@
     "yarn": "1.22.10"
   },
   "dependencies": {
+    "@changesets/cli": "^2.14.1",
     "axios": "^0.21.1",
-    "ts-loader": "^8.0.18",
+    "babel-eslint": "^10.1.0",
     "lodash": "4.17.21"
   }
 }

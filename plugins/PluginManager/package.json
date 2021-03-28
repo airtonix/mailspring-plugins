@@ -1,0 +1,29 @@
+{
+  "name": "@airtonix/mailspring-plugin-manager",
+  "main": "./lib/main",
+  "version": "0.0.1",
+  "description": "Enter a description of your package!",
+  "license": "MIT",
+  "keywords": [
+    "mailspring",
+    "mailspring-plugin"
+  ],
+  "scripts": {
+    "dev": "run-p 'dev:watch:*'",
+    "dev:watch:js": "onchange './src/**/*.js*' -i -v -- yarn build:js",
+    "build": "run-p 'build:*'",
+    "build:js": "echo 'building' && tsc"
+  },
+  "volta": {
+    "node": "14.16.0",
+    "yarn": "1.22.10"
+  },
+  "engines": {
+    "mailspring": ">=1.6.3",
+    "node": ">=12"
+  },
+  "windowTypes": {
+    "default": true,
+    "composer": true
+  }
+}

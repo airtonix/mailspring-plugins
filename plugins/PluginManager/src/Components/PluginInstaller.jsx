@@ -1,5 +1,5 @@
 import { React } from 'mailspring-exports';
-import { Flexbox, Spinner } from 'mailspring-component-kit';
+import { Flexbox, RetinaImg, Spinner } from 'mailspring-component-kit';
 
 import { NpmApiClient } from '../Services/Npm';
 
@@ -59,7 +59,7 @@ export class PluginInstaller extends React.Component {
           className={'plugininstaller__close btn'}
           onClick={this.handleCloseClick}
         >
-          Close...
+          <RetinaImg name="sheet-back@2x.png" /> Back...
         </button>
         <PluginSearch
           onKeyDown={this.clearError}
